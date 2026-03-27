@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>USer Details</title>
+</head>
+<body>
+<div>
+    <h2>Welcome!!! Your Personal Details are:</h2>
+    <p><b>User ID:</b>{{ user.userid }}</p>
+    <p><b>User Name:</b>{{ user.username }}</p>
+    <p><b>Email:</b>{{ user.email }}</p>
+    <p><b>Phone:</b>{{ user.phone }}</p>
+    <p><b>City:</b>{{ user.city }}</p>
+    <a href="/login">Go to Login page</a>
+    <!--Delete Button -->
+    <form action="{{ url_for('delete_user', user_id=user.id) }}" method="POST"
+      onsubmit="return confirm('Are you sure you want to delete this user?');">
+    <button type="submit">Delete User</button>
+</form>
+</div>
+</body>
+</html>

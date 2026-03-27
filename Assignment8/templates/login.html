@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login</title>
+</head>
+<body>
+<form method = "POST" >
+    {{form.csrf_token}}
+    {{form.userid.label}}{{form.userid()}}
+    <br>{{form.password.label}}{{form.password()}}
+    <br>{{form.submit()}}
+    <p>New user: <a href = "/register">Register</a></p>
+</form>
+</body>
+</html>

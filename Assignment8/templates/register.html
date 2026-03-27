@@ -3,17 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Registration</title>
+    <title>Login</title>
 </head>
 <body>
-<form action = "/confirmation" method = "POST">
-    <label>NAME</label>
-    <input type = "text" name = "name">
-    <label>City</label>
-    <input type = "text" name = "city">
-    <label>Phone Number</label>
-    <input type = "text" name = "phone">
-    <input type = "submit" value = "Register">
+<form method = "POST">
+    {{form.csrf_token}}
+    {{ form.userid.label }}{{ form.userid ()}}
+    {% for error in form.userid.errors %}
+    <span style="color:red">{{ error }}</span>
+    {% endfor %}
+    <br>{{form.username.label}}{{form.username()}}
+    <br>{{form.email.label}}{{form.email()}}
+    {% for error in form.email.errors %}
+    <span style="color:red">{{ error }}</span>
+    {% endfor %}
+    <br>{{form.phone.label}}{{form.phone()}}
+    {% for error in form.phone.errors %}
+    <span style="color:red">{{ error }}</span>
+    {% endfor %}
+    <br>{{form.city.label}}{{form.city()}}
+    <br>{{form.password.label}}{{form.password()}}
+    <p style="font-weight:bold; color:blue">- Password Must be at least 8 character and max 15</p>
+    {% for error in form.password.errors %}
+    <span style="color:red">{{ error }}</span>
+    {% endfor %}
+    <br>{{form.confirm_password.label}}{{form.confirm_password()}}
+    {% for error in form.confirm_password.errors %}
+    <span style="color:red">{{ error }}</span>
+    {% endfor %}
+    <br>{{form.submit()}}
 </form>
+<div class="text-center mt-3">
+    <p>Already have an account?
+        <a href="{{ url_for('login') }}">Login here</a>
+    </p>
+</div>
 </body>
 </html>
